@@ -1,0 +1,35 @@
+{
+  "name": "payment-crypto",
+  "version": "1.0.1",
+  "description": "Crypto Pay API",
+  "main": "./module/payment-crypto.js",
+  "types": "./module/payment-crypto.d.ts",
+  "scripts": {
+    "docs": "typedoc module/*d.ts --hideGenerator --out docs --plugin typedoc-material-theme --name \"Payment Crypto\" --media media --themeColor \"#e0efff\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiogia/payment-crypto.git"
+  },
+  "keywords": [
+    "crypto",
+    "api",
+    "pay",
+    "crypto",
+    "bot"
+  ],
+  "author": "Kio Gia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kiogia/payment-crypto/issues"
+  },
+  "homepage": "https://github.com/kiogia/payment-crypto#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "typedoc": "^0.25.4",
+    "typedoc-material-theme": "^1.0.1"
+  }
+}
