@@ -7,5 +7,6 @@
   "customCss": "docs.css",
   "favicon": "media/favicon.png",
   "footerLastModified": true,
+  "cname": "",
   "plugin": ["typedoc-material-theme", "typedoc-plugin-extras"]
 }
