@@ -109,5 +109,5 @@ console.log(me);
 [12]: https://npmjs.com/package/payment-crypto
 [13]: https://npmjs.com/package/@foile/crypto-pay-api
 [14]: https://i.imgur.com/EJQ5EKK.png
-[15]: https://crypto.js.org/
-[16]: https://crypto.js.org/classes/payment_crypto.default
+[15]: https://kiogia.github.io/payment-crypto/
+[16]: https://kiogia.github.io/payment-crypto/classes/payment_crypto.default
