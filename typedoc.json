@@ -7,6 +7,6 @@
   "customCss": "docs.css",
   "favicon": "media/favicon.png",
   "footerLastModified": true,
-  "cname": "",
+  "cname": "payment-crypto.js.org",
   "plugin": ["typedoc-material-theme", "typedoc-plugin-extras"]
 }
