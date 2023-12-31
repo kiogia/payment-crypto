@@ -1,4 +1,4 @@
-# [![Payment Crypto](media/banner.png)][12]
+# [![Payment Crypto][14]][12]
 
 ## Introduction
 
@@ -108,3 +108,4 @@ console.log(me);
 [11]: https://help.crypt.bot/crypto-pay-api
 [12]: https://npmjs.com/package/payment-crypto
 [13]: https://npmjs.com/package/@foile/crypto-pay-api
+[14]: https://i.imgur.com/EJQ5EKK.png

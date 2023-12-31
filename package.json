@@ -2,10 +2,15 @@
   "name": "payment-crypto",
   "version": "1.0.1",
   "description": "Crypto Pay API",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "module/*"
+  ],
   "main": "./module/payment-crypto.js",
   "types": "./module/payment-crypto.d.ts",
   "scripts": {
-    "docs": "typedoc module/*d.ts --hideGenerator --out docs --plugin typedoc-material-theme --name \"Payment Crypto\" --media media --themeColor \"#e0efff\""
+    "docs": "typedoc module/*d.ts"
   },
   "repository": {
     "type": "git",
@@ -30,6 +35,7 @@
   },
   "devDependencies": {
     "typedoc": "^0.25.4",
-    "typedoc-material-theme": "^1.0.1"
+    "typedoc-material-theme": "^1.0.1",
+    "typedoc-plugin-extras": "^3.0.0"
   }
 }

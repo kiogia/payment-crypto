@@ -3,11 +3,13 @@ declare module 'payment-crypto';
 
 export default class PaymentCrypto {
   /**
+   * @description
    * First, you need to create a new app and get API token. Open [@CryptoBot](https://t.me/CryptoBot) ([@CryptoTestnetBot](https://t.me/CryptoTestnetBot) for testnet), go to Crypto Pay and tap **Create App** to get API Token.
    */
   constructor(token: string, options?: Types.PaymentCryptoOptions);
 
   /**
+   * @description
    * Interface representing a method to call an API with optional parameters.
    * @example
    * ```js
@@ -23,8 +25,9 @@ export default class PaymentCrypto {
   ): Promise<object>;
 
   /**
-   * Get
    * @event
+   * @description
+   * Receiving updates.
    * @example
    * ```js
    * bot.on('invoice_paid', (update) => {
@@ -38,6 +41,7 @@ export default class PaymentCrypto {
   ): void;
 
   /**
+   * @description
    * Use this method to test your app's authentication token and get basic information about an app.
    * @example
    * ```js
@@ -74,7 +78,12 @@ export default class PaymentCrypto {
   ): Promise<Types.Invoice>;
 
   /**
+   * @description
    * Use this method to delete invoices created by your app.
+   * @example
+   * ```js
+   * await payment.deleteInvoice(12345)
+   * ```
    */
   deleteInvoice(
     /** Invoice ID to be deleted. */
@@ -82,6 +91,7 @@ export default class PaymentCrypto {
   ): Promise<true>;
 
   /**
+   * @description
    * Use this method to create a new check.
    */
   createCheck(
@@ -92,7 +102,12 @@ export default class PaymentCrypto {
   ): Promise<Types.Check>;
 
   /**
+   * @description
    * Use this method to delete checks created by your app.
+   * @example
+   * ```js
+   * await payment.deleteCheck(12345)
+   * ```
    */
   deleteCheck(
     /** Check ID to be deleted. */
@@ -100,7 +115,13 @@ export default class PaymentCrypto {
   ): Promise<true>;
 
   /**
+   * @description
    * Use this method to send coins from your app's balance to a user. This method must first be enabled in the security settings of your app. Open [@CryptoBot](https://t.me/CryptoBot) ([@CryptoTestnetBot](https://t.me/CryptoTestnetBot) for testnet), go to Crypto Pay → My Apps, choose an app, then go to Security -> Transfers... and tap **Enable**.
+   * @example
+   * ```js
+   * const spendID = payment.generateSpendID()
+   * await payment.transfer(123456789, 'TON', 5, spendID)
+   * ```
    */
   transfer(
     /** Telegram user ID. User must have previously used [@CryptoBot](https://t.me/CryptoBot) ([@CryptoTestnetBot](https://t.me/CryptoTestnetBot) for testnet). */
@@ -109,63 +130,129 @@ export default class PaymentCrypto {
     asset: Types.Asset,
     /** Amount of the transfer in float. The minimum and maximum amount limits for each of the supported assets roughly correspond to 1-25000 USD. Use [getExchangeRates](../docs/functions.md#) to convert amounts. */
     amount: number,
-    /** UUID or any random UTF-8 string generated for each transfer to make your request idempotent in cases when it should be retried (for example, request timeout, connection reset, 500 HTTP status, etc). Only one transfer with the same `spend_id` can be accepted from your app. Up to 64 symbols. */
+    /** UUID or any random UTF-8 string generated for each transfer to make your request idempotent in cases when it should be retried (for example, request timeout, connection reset, `500` HTTP status, etc). Only one transfer with the same `spend_id` can be accepted from your app. Up to `64` symbols. */
     spend_id: string,
     options?: Types.TransferOptions
   ): Promise<true>;
 
   /**
+   * @description
    * Generates spend ID for transfer.
+   * @example
+   * ```js
+   * const spendID = payment.generateSpendID(64)
+   * console.log(spendID)
+   * ```
    */
   generateSpendID(length?: number): string;
 
   /**
+   * @description
    * Use this method to get invoices created by your app.
+   * @example
+   * ```js
+   * const invoices = payment.getInvoices()
+   * console.log(invoices)
+   * ```
    */
   getInvoices(options?: Types.GetInvoicesOptions): Promise<Types.Invoice[]>;
 
   /**
+   * @description
    * Use this method to get invoice created by your app.
+   * @example
+   * ```js
+   * const invoice = payment.getInvoice(12345)
+   * console.log(invoice)
+   * ```
    */
   getInvoice(invoice_id: number): Promise<Types.Invoice>;
 
   /**
+   * @description
    * Use this method to get transfers created by your app.
+   * @example
+   * ```js
+   * const transfers = payment.getTransfers()
+   * console.log(transfers)
+   * ```
    */
   getTransfers(options?: Types.GetTransfersOptions): Promise<Types.Transfer[]>;
 
   /**
+   * @description
    * Use this method to get transfer created by your app.
+   * @example
+   * ```js
+   * const transfer = payment.getTransfer(12345)
+   * console.log(transfer)
+   * ```
    */
   getTransfer(transfer_id: number): Promise<Types.Transfer>;
 
   /**
+   * @description
    * Use this method to get checks created by your app.
+   * @example
+   * ```js
+   * const checks = payment.getChecks()
+   * console.log(checks)
+   * ```
    */
   getChecks(options?: Types.GetChecksOptions): Promise<Types.Check[]>;
 
   /**
+   * @description
    * Use this method to get check created by your app.
+   * @example
+   * ```js
+   * const check = payment.getCheck(12345)
+   * console.log(check)
+   * ```
    */
   getCheck(check_id: number): Promise<Types.Check>;
 
   /**
+   * @description
    * Use this method to get balances of your app.
+   * @example
+   * ```js
+   * const balances = payment.getBalances()
+   * console.log(balances)
+   * ```
    */
   getBalances(): Promise<Types.Balance[]>;
 
   /**
+   * @description
    * Use this method to get balance of your app.
+   * @example
+   * ```js
+   * const balance = payment.getBalance('TON')
+   * console.log(balance)
+   * ```
    */
   getBalance(currency_code: Types.Asset): Promise<Types.Balance>;
 
   /**
+   * @description
    * Use this method to get exchange rates of supported currencies.
+   * @example
+   * ```js
+   * const exchangeRates = payment.getExchangeRates()
+   * console.log(exchangeRates)
+   * ```
    */
   getExchangeRates(): Promise<Types.ExchangeRate[]>;
 
   /**
+   * @description
    * Use this method to get exchange rate of supported currencies.
+   * @example
+   * ```js
+   * const exchangeRate = payment.getExchangeRate('TON', 'USD')
+   * console.log(exchangeRate)
+   * ```
    */
   getExchangeRate(
     source: Types.Asset,
@@ -173,14 +260,26 @@ export default class PaymentCrypto {
   ): Promise<Types.ExchangeRate>;
 
   /**
+   * @description
    * Use this method to get a list of supported currencies.
+   * @example
+   * ```js
+   * const currencies = payment.getCurrencies()
+   * console.log(currencies)
+   * ```
    */
   getCurrencies(
     options?: Types.GetCurrenciesOptions
   ): Promise<Types.Currency[]>;
 
   /**
-   * Use this method to get supported currencies.
+   * @description
+   * Use this method to get supported currency.
+   * @example
+   * ```js
+   * const currency = payment.getCurrency('TON')
+   * console.log(currency)
+   * ```
    */
   getCurrency(code: Types.Asset | Types.Fiat): Promise<Types.Currency>;
 }

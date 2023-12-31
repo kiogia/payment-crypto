@@ -63,9 +63,9 @@ interface CommonInvoice {
    * @deprecated
    */
   usd_rate?: number;
-  /** True, if the user can add comment to the payment. */
+  /** `True`, if the user can add comment to the payment. */
   allow_comments: boolean;
-  /** True, if the user can pay the invoice anonymously. */
+  /** `True`, if the user can pay the invoice anonymously. */
   allow_anonymous: boolean;
   /** Date the invoice expires in Unix time. */
   expiration_date?: number;
@@ -95,7 +95,7 @@ interface CryptoInvoice extends CommonInvoice {
 interface FiatInvoice extends CommonInvoice {
   /** Type of the price. */
   currency_type: 'fiat';
-  /** Fiat currency code if the field `currency_type` has fiat as a value. */
+  /** Fiat currency code if the field `currency_type` has `fiat` as a value. */
   fiat: Fiat;
   /** List of assets which can be used to pay the invoice if the field `currency_type` has `fiat` as a value. */
   accepted_assets: Asset[];
@@ -124,7 +124,7 @@ interface PaidInvoice extends CommonInvoice {
 /**
  * @hidden
  */
-interface PaidFiatInvoice extends FiatInvoice {
+interface PaidFiatInvoice extends PaidAndFiatInvoice {
   /** Cryptocurrency alphabetic code for which the invoice was paid. */
   paid_asset: Asset;
   /** Amount of the invoice for which the invoice was paid. */
@@ -132,6 +132,18 @@ interface PaidFiatInvoice extends FiatInvoice {
   /** The rate of the paid_asset valued in the fiat currency if the field `currency_type` has `fiat` as a value. */
   paid_fiat_rate: number;
 }
+
+/**
+ * @hidden
+ */
+interface Updates {
+  invoice_paid: Invoice;
+}
+
+/**
+ * @hidden
+ */
+type PaidAndFiatInvoice = FiatInvoice & PaidInvoice;
 
 export type AppInfo = {
   /** Application ID. */
@@ -143,7 +155,9 @@ export type AppInfo = {
 };
 
 export type PaymentCryptoOptions = {
+  /** Blockchain network mode. */
   mode?: 'mainnet' | 'testnet';
+  /** Protocol of sent requests. */
   protocol?: 'http' | 'https';
   /** Webhook configuration. */
   webhook?: {
@@ -166,24 +180,24 @@ export type GetCurrenciesOptions = {
 export type CreateInvoiceOptions = {
   /** Description for the invoice. User will see this description when they pay the invoice. Up to 1024 characters. */
   description?: string;
-  /** Text of the message which will be presented to a user after the invoice is paid. Up to 2048 characters. */
+  /** Text of the message which will be presented to a user after the invoice is paid. Up to `2048` characters. */
   hidden_message?: string;
   /** Label of the button which will be presented to a user after the invoice is paid. */
   paid_btn_name?: PaidButtonName;
-  /** Required if `paid_btn_name` is used. URL opened using the button which will be presented to a user after the invoice is paid. You can set any callback link (for example, a success link or link to homepage). Starts with https or http. */
+  /** Required if `paid_btn_name` is used. URL opened using the button which will be presented to a user after the invoice is paid. You can set any callback link (for example, a success link or link to homepage). Starts with `https` or `http`. */
   paid_btn_url?: string;
-  /** Any data you want to attach to the invoice (for example, user ID, payment ID, ect). Up to 4kb. */
+  /** Any data you want to attach to the invoice (for example, user ID, payment ID, ect). Up to `4kb`. */
   payload?: string;
   /** Allow a user to add a comment to the payment. */
   allow_comments?: boolean;
   /** Allow a user to pay the invoice anonymously. */
   allow_anonymous?: boolean;
-  /** You can set a payment time limit for the invoice in seconds. Values between 1-2678400 are accepted. */
+  /** You can set a payment time limit for the invoice in seconds. Values between `1-2678400` are accepted. */
   expires_in: number;
 };
 
 export type TransferOptions = {
-  /** Comment for the transfer. Users will see this comment when they get notified about the transfer. Up to 1024 symbols. */
+  /** Comment for the transfer. Users will see this comment when they get notified about the transfer. Up to `1024` symbols. */
   comment?: string;
   /** Pass true if the user should not receive a notification about the completed transfer. */
   disable_send_notification?: boolean;
@@ -200,7 +214,7 @@ export type GetInvoicesOptions = {
   status?: InvoiceStatus;
   /** Offset needed to return a specific subset of invoices. */
   offset?: number;
-  /** Number of invoices to be returned. Values between 1-1000 are accepted.  */
+  /** Number of invoices to be returned. Values between `1-1000` are accepted.  */
   count?: number;
 };
 
@@ -211,7 +225,7 @@ export type GetTransfersOptions = {
   transfer_ids?: number[];
   /** Offset needed to return a specific subset of transfers. */
   offset?: number;
-  /** Number of transfers to be returned. Values between 1-1000 are accepted.  */
+  /** Number of transfers to be returned. Values between `1-1000` are accepted.  */
   count?: number;
 };
 
@@ -224,7 +238,7 @@ export type GetChecksOptions = {
   status?: CheckStatus;
   /** Offset needed to return a specific subset of checks. */
   offset?: number;
-  /** Number of checks to be returned. Values between 1-1000 are accepted. */
+  /** Number of checks to be returned. Values between `1-1000` are accepted. */
   count?: number;
 };
 
@@ -239,7 +253,7 @@ export type Transfer = {
   amount: number;
   /** Status of the transfer. */
   status: TransferStatus;
-  /** Date the transfer was completed in Unix  */
+  /** Date the transfer was completed in Unix format.  */
   completed_at: number;
   /** Comment for this transfer. */
   comment?: string;
@@ -254,7 +268,7 @@ export type Check = {
   asset: Asset;
   /** Amount of the check. */
   amount: number;
-  /** URL should be provided to the user to  */
+  /** URL should be provided to the user to activate the check. */
   bot_check_url: string;
   /** Status of the check. */
   status: CheckStatus;
@@ -304,10 +318,6 @@ export type Currency = {
   /** The number of decimal places used for representing fractional amounts of the currency. */
   decimals: number;
 };
-
-interface Updates {
-  invoice_paid: Invoice;
-}
 
 export type TransferStatus = 'completed';
 export type InvoiceStatus = 'active' | 'paid' | 'expired';
