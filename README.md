@@ -77,12 +77,12 @@ const me = await payment.getMe();
 console.log(me);
 ```
 
-> You can find more examples [here](docs/examples.md).
+> You can find more examples [here][16].
 
 ## Useful links
 
-- [Documentation](docs/functions.md)
-- [Examples](docs/examples.md)
+- [Documentation][15]
+- [Examples][16]
 - [Official reference][11]
 - [crypto-pay-api by Foile][13]
 - payment-crypto
@@ -109,3 +109,5 @@ console.log(me);
 [12]: https://npmjs.com/package/payment-crypto
 [13]: https://npmjs.com/package/@foile/crypto-pay-api
 [14]: https://i.imgur.com/EJQ5EKK.png
+[15]: https://crypto.js.org/
+[16]: https://crypto.js.org/classes/payment_crypto.default
