@@ -36,8 +36,13 @@ export default class PaymentCrypto {
    * ```
    */
   on<UpdateType extends keyof Types.Updates>(
+    /** The type of update received. */
     updateType: UpdateType,
-    callback: (update: Types.Update<UpdateType>) => void
+    /** A function that is executed when an update received. */
+    callback: (
+      /** Information about the update received. */
+      update: Types.Update<UpdateType>
+    ) => void
   ): void;
 
   /**
@@ -73,7 +78,9 @@ export default class PaymentCrypto {
    * ```
    */
   createInvoice(
+    /** Required invoice information. */
     currency: Types.InvoiceCurrencyOptions,
+    /** Additional optional options. */
     options?: Types.CreateInvoiceOptions
   ): Promise<Types.Invoice>;
 
@@ -132,6 +139,7 @@ export default class PaymentCrypto {
     amount: number,
     /** UUID or any random UTF-8 string generated for each transfer to make your request idempotent in cases when it should be retried (for example, request timeout, connection reset, `500` HTTP status, etc). Only one transfer with the same `spend_id` can be accepted from your app. Up to `64` symbols. */
     spend_id: string,
+    /** Additional optional options. */
     options?: Types.TransferOptions
   ): Promise<true>;
 
@@ -155,7 +163,10 @@ export default class PaymentCrypto {
    * console.log(invoices)
    * ```
    */
-  getInvoices(options?: Types.GetInvoicesOptions): Promise<Types.Invoice[]>;
+  getInvoices(
+    /** Additional optional options. */
+    options?: Types.GetInvoicesOptions
+  ): Promise<Types.Invoice[]>;
 
   /**
    * @description
@@ -166,7 +177,10 @@ export default class PaymentCrypto {
    * console.log(invoice)
    * ```
    */
-  getInvoice(invoice_id: number): Promise<Types.Invoice>;
+  getInvoice(
+    /** Invoice IDs. */
+    invoice_id: number
+  ): Promise<Types.Invoice>;
 
   /**
    * @description
@@ -177,7 +191,10 @@ export default class PaymentCrypto {
    * console.log(transfers)
    * ```
    */
-  getTransfers(options?: Types.GetTransfersOptions): Promise<Types.Transfer[]>;
+  getTransfers(
+    /** Additional optional options. */
+    options?: Types.GetTransfersOptions
+  ): Promise<Types.Transfer[]>;
 
   /**
    * @description
@@ -188,7 +205,10 @@ export default class PaymentCrypto {
    * console.log(transfer)
    * ```
    */
-  getTransfer(transfer_id: number): Promise<Types.Transfer>;
+  getTransfer(
+    /** Transfer IDs. */
+    transfer_id: number
+  ): Promise<Types.Transfer>;
 
   /**
    * @description
@@ -199,7 +219,10 @@ export default class PaymentCrypto {
    * console.log(checks)
    * ```
    */
-  getChecks(options?: Types.GetChecksOptions): Promise<Types.Check[]>;
+  getChecks(
+    /** Additional optional options. */
+    options?: Types.GetChecksOptions
+  ): Promise<Types.Check[]>;
 
   /**
    * @description
@@ -210,7 +233,10 @@ export default class PaymentCrypto {
    * console.log(check)
    * ```
    */
-  getCheck(check_id: number): Promise<Types.Check>;
+  getCheck(
+    /** Check ID. */
+    check_id: number
+  ): Promise<Types.Check>;
 
   /**
    * @description
@@ -232,7 +258,10 @@ export default class PaymentCrypto {
    * console.log(balance)
    * ```
    */
-  getBalance(currency_code: Types.Asset): Promise<Types.Balance>;
+  getBalance(
+    /** Cryptocurrency alphabetic code. */
+    currency_code: Types.Asset
+  ): Promise<Types.Balance>;
 
   /**
    * @description
@@ -255,7 +284,9 @@ export default class PaymentCrypto {
    * ```
    */
   getExchangeRate(
+    /** Cryptocurrency alphabetic code. */
     source: Types.Asset,
+    /** Fiat currency code. */
     target: Types.Fiat
   ): Promise<Types.ExchangeRate>;
 
@@ -269,6 +300,7 @@ export default class PaymentCrypto {
    * ```
    */
   getCurrencies(
+    /** Additional optional options. */
     options?: Types.GetCurrenciesOptions
   ): Promise<Types.Currency[]>;
 
@@ -281,5 +313,8 @@ export default class PaymentCrypto {
    * console.log(currency)
    * ```
    */
-  getCurrency(code: Types.Asset | Types.Fiat): Promise<Types.Currency>;
+  getCurrency(
+    /** Cryptocurrency alphabetic or fiat currency code. */
+    code: Types.Asset | Types.Fiat
+  ): Promise<Types.Currency>;
 }

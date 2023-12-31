@@ -1,11 +1,11 @@
 {
   "name": "Payment Crypto",
-  // "hideGenerator": true,
-  "out": "./docs",
+  "logLevel": "None",
+  "out": "docs",
   "media": "media",
   "themeColor": "#e0efff",
   "customCss": "docs.css",
   "favicon": "media/favicon.png",
-  // "footerLastModified": true,
+  "footerLastModified": true,
   "plugin": ["typedoc-material-theme", "typedoc-plugin-extras"]
 }

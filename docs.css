@@ -3,6 +3,7 @@
 :root,
 :root[data-theme='light'],
 :root[data-theme='dark'] {
+  --footer-height: 36px;
   --font-sans: 'Space Grotesk', sans-serif;
   --font-mono: 'Inconsolata', monospace;
 }
@@ -23,4 +24,12 @@ select {
 
 option {
   background-color: var(--md-sys-color-surface);
+}
+
+.tsd-generator {
+  margin: 15px;
+}
+
+.tsd-generator p {
+  font-size: 0.9em;
 }
