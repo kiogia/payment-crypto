@@ -8,5 +8,6 @@
   "favicon": "media/favicon.png",
   "footerLastModified": true,
   "cname": "payment-crypto.js.org",
+  "cleanOutputDir": false,
   "plugin": ["typedoc-material-theme", "typedoc-plugin-extras"]
 }

@@ -1,7 +1,7 @@
 import * as Types from './types';
 declare module 'payment-crypto';
 
-export default class PaymentCrypto {
+export class PaymentCrypto {
   /**
    * @description
    * First, you need to create a new app and get API token. Open [@CryptoBot](https://t.me/CryptoBot) ([@CryptoTestnetBot](https://t.me/CryptoTestnetBot) for testnet), go to Crypto Pay and tap **Create App** to get API Token.
