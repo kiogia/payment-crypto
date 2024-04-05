@@ -2,7 +2,7 @@ import url from 'url';
 import crypto from 'crypto';
 import express from 'express';
 
-export default class PaymentCrypto {
+export class PaymentCrypto {
   constructor(token, options = {}) {
     this.token = token;
     this.callbacks = {};
