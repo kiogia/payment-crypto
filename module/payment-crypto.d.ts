@@ -58,6 +58,20 @@ export class PaymentCrypto {
 
   /**
    * @description
+   * Use this method to get app statistics.
+   * @example
+   * ```js
+   * const appStats = await payment.getStats()
+   * console.log(appStats)
+   * ```
+   */
+  getStats(
+    /** Additional optional options. */
+    options: Types.GetStatsOptions
+  ): Promise<Types.AppStats>;
+
+  /**
+   * @description
    * Use this method to create a new invoice.
    * @example
    * ```js
@@ -105,7 +119,9 @@ export class PaymentCrypto {
     /** Cryptocurrency alphabetic code. */
     asset: Types.Asset,
     /** Amount of the invoice in float. */
-    amount: number
+    amount: number,
+    /** Additional optional options. */
+    options: Types.CreateCheckOptions
   ): Promise<Types.Check>;
 
   /**

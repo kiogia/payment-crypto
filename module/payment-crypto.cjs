@@ -1,8 +1,8 @@
-import url from 'url';
-import crypto from 'crypto';
-import express from 'express';
+const url = require('url');
+const crypto = require('crypto');
+const express = require('express');
 
-export default class PaymentCrypto {
+module.exports = class PaymentCrypto {
   constructor(token, options = {}) {
     this.token = token;
     this.callbacks = {};
@@ -260,4 +260,4 @@ export default class PaymentCrypto {
       });
     });
   }
-}
+};

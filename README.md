@@ -85,7 +85,7 @@ console.log(me);
 - [Examples][16]
 - [Official reference][11]
 - [crypto-pay-api by Foile][13]
-- payment-crypto
+- `payment-crypto`
   - [News channel][9]
   - [Discussion chat][10]
 - Crypto Pay news channel

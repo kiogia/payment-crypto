@@ -145,15 +145,6 @@ interface Updates {
  */
 type PaidAndFiatInvoice = FiatInvoice & PaidInvoice;
 
-export type AppInfo = {
-  /** Application ID. */
-  app_id: number;
-  /** Application name. */
-  name: string;
-  /** Bot processing requests. */
-  payment_processing_bot_username: ProcessingBot;
-};
-
 export type PaymentCryptoOptions = {
   /** Blockchain network mode. */
   mode?: 'mainnet' | 'testnet';
@@ -166,6 +157,39 @@ export type PaymentCryptoOptions = {
     /** Port for the webhook. */
     port?: number;
   };
+};
+
+export type AppInfo = {
+  /** Application ID. */
+  app_id: number;
+  /** Application name. */
+  name: string;
+  /** Bot processing requests. */
+  payment_processing_bot_username: ProcessingBot;
+};
+
+export type AppStats = {
+  /** Total volume of paid invoices in USD. */
+  volume: number;
+  /** Conversion of all created invoices. */
+  conversion: number;
+  /** The unique number of users who have paid the invoice. */
+  unique_users_count: number;
+  /** Total created invoice count. */
+  created_invoice_count: number;
+  /** Total paid invoice count. */
+  paid_invoice_count: number;
+  /** The date on which the statistics calculation was started in Unix format. */
+  start_at: number;
+  /** The date on which the statistics calculation was ended in Unix format. */
+  end_at: number;
+};
+
+export type GetStatsOptions = {
+  /** Date from which start calculating statistics in Unix or ISO 8601 format. */
+  start_at?: string | number;
+  /** The date on which to finish calculating statistics in Unix or ISO 8601  format. */
+  end_at?: string | number;
 };
 
 export type GetCurrenciesOptions = {
@@ -194,6 +218,13 @@ export type CreateInvoiceOptions = {
   allow_anonymous?: boolean;
   /** You can set a payment time limit for the invoice in seconds. Values between `1-2678400` are accepted. */
   expires_in: number;
+};
+
+export type CreateCheckOptions = {
+  /** ID of the user who will be able to activate the check. */
+  pin_to_user_id?: number;
+  /** A user with the specified username will be able to activate the check. */
+  pin_to_username?: string;
 };
 
 export type TransferOptions = {
