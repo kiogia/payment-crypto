@@ -77,6 +77,10 @@ interface CommonInvoice {
   paid_btn_name?: PaidButtonName;
   /** URL opened using the button. */
   paid_btn_url?: string;
+  /** Use this URL to pay an invoice to the Telegram Mini App version. */
+  mini_app_invoice_url?: string;
+  /** Use this URL to pay an invoice to the Web version of Crypto Bot. */
+  web_app_invoice_url?: string;
 }
 
 /**
