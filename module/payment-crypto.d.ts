@@ -114,6 +114,10 @@ export class PaymentCrypto {
   /**
    * @description
    * Use this method to create a new check.
+   * @example
+   * ```js
+   * await payment.createCheck()
+   * ```
    */
   createCheck(
     /** Cryptocurrency alphabetic code. */
