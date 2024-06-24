@@ -26,10 +26,10 @@ bot.on('invoice_paid', (update) => {
 });
 ```
 
-| Field        | Type                        | Description                                          |
-| ------------ | --------------------------- | ---------------------------------------------------- |
-| `updateType` | [`UpdateType`](./types.md#) | The type of update received.                         |
-| `callback`   | `Function`                  | A function that is executed when an update received. |
+| Field        | Type                                | Description                                          |
+| ------------ | ----------------------------------- | ---------------------------------------------------- |
+| `updateType` | [`UpdateType`](types.md#UpdateType) | The type of update received.                         |
+| `callback`   | `Function`                          | A function that is executed when an update received. |
 
 Returns `void`
 
@@ -53,9 +53,9 @@ const appStats = await payment.getStats();
 console.log(appStats);
 ```
 
-| Field     | Type              | Description                  |
-| --------- | ----------------- | ---------------------------- |
-| `options` | `GetStatsOptions` | Additional optional options. |
+| Field     | Type                                          | Description                  |
+| --------- | --------------------------------------------- | ---------------------------- |
+| `options` | [`GetStatsOptions`](types.md#GetStatsOptions) | Additional optional options. |
 
 Returns `Promise` with `AppStats`
 
@@ -84,10 +84,10 @@ console.log(`Payment link ${invoice.bot_invoice_url}`);
 
 :::
 
-| Field      | Type                     | Description                   |
-| ---------- | ------------------------ | ----------------------------- |
-| `currency` | `InvoiceCurrencyOptions` | Required invoice information. |
-| `options?` | `CreateInvoiceOptions`   | Additional optional options.  |
+| Field      | Type                                                    | Description                   |
+| ---------- | ------------------------------------------------------- | ----------------------------- |
+| `currency` | [`InvoiceCurrencyOptions`](types.md)                    | Required invoice information. |
+| `options?` | [`CreateInvoiceOptions`](types.md#CreateInvoiceOptions) | Additional optional options.  |
 
 Returns `Promise` with `Invoice`
 
@@ -109,11 +109,11 @@ Returns `Promise` with `true`
 
 Use this method to create a new check.
 
-| Field     | Type                        | Description                     |
-| --------- | --------------------------- | ------------------------------- |
-| `asset`   | [`Asset`](./types.md#Asset) | Cryptocurrency alphabetic code. |
-| `amount`  | `number`                    | Amount of the invoice in float. |
-| `options` | `CreateCheckOptions`        | Additional optional options.    |
+| Field     | Type                                                | Description                     |
+| --------- | --------------------------------------------------- | ------------------------------- |
+| `asset`   | [`Asset`](types.md#Asset)                           | Cryptocurrency alphabetic code. |
+| `amount`  | `number`                                            | Amount of the invoice in float. |
+| `options` | [`CreateCheckOptions`](types.md#CreateCheckOptions) | Additional optional options.    |
 
 Returns `Promise` with `Check`
 
