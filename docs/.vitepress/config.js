@@ -14,7 +14,7 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: 'Home', link: '/' },
-          { text: 'Functions', link: '/functions' },
+          { text: 'Functions', link: '/methods' },
           { text: 'Examples', link: '/examples' },
         ],
         sidebar: [
@@ -23,8 +23,8 @@ export default defineConfig({
             items: [
               { text: 'Introduction', link: '/introduction' },
               {
-                text: 'Functions',
-                link: '/functions',
+                text: 'Methods',
+                link: '/methods',
               },
               { text: 'Types', link: '/types' },
               { text: 'Testnet', link: '/testnet' },

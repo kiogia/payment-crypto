@@ -13,7 +13,7 @@ interface CommonInvoiceCurrency {
  */
 interface CryptoInvoiceCurrency extends CommonInvoiceCurrency {
   /** Type of the price. */
-  currency_type: 'crypto';
+  currency_type: CurrencyType.Crypto;
   /** Cryptocurrency alphabetic code. */
   asset: Asset;
 }
@@ -23,7 +23,7 @@ interface CryptoInvoiceCurrency extends CommonInvoiceCurrency {
  */
 interface FiatInvoiceCurrency extends CommonInvoiceCurrency {
   /** Type of the price. */
-  currency_type: 'fiat';
+  currency_type: CurrencyType.Fiat;
   /** Fiat currency code. */
   fiat: Fiat;
 }
@@ -88,7 +88,7 @@ interface CommonInvoice {
  */
 interface CryptoInvoice extends CommonInvoice {
   /** Type of the price. */
-  currency_type: 'crypto';
+  currency_type: CurrencyType.Crypto;
   /** Cryptocurrency code if the field `currency_type` has `crypto` as a value. */
   asset: Asset;
 }
@@ -98,7 +98,7 @@ interface CryptoInvoice extends CommonInvoice {
  */
 interface FiatInvoice extends CommonInvoice {
   /** Type of the price. */
-  currency_type: 'fiat';
+  currency_type: CurrencyType.Fiat;
   /** Fiat currency code if the field `currency_type` has `fiat` as a value. */
   fiat: Fiat;
   /** List of assets which can be used to pay the invoice if the field `currency_type` has `fiat` as a value. */
@@ -110,7 +110,7 @@ interface FiatInvoice extends CommonInvoice {
  */
 interface PaidInvoice extends CommonInvoice {
   /** Status of the transfer. */
-  status: 'paid';
+  status: InvoiceStatus.Paid;
   /** Asset of service fees charged when the invoice was paid. */
   fee_asset: Asset;
   /** Amount of service fees charged when the invoice was paid. */
@@ -151,9 +151,9 @@ type PaidAndFiatInvoice = FiatInvoice & PaidInvoice;
 
 export type PaymentCryptoOptions = {
   /** Blockchain network mode. */
-  mode?: 'mainnet' | 'testnet';
+  mode?: Mode;
   /** Protocol of sent requests. */
-  protocol?: 'http' | 'https';
+  protocol?: Protocol;
   /** Webhook configuration. */
   webhook?: {
     /** Path for the webhook. */
@@ -354,16 +354,40 @@ export type Currency = {
   decimals: number;
 };
 
-export type TransferStatus = 'completed';
-export type InvoiceStatus = 'active' | 'paid' | 'expired';
-export type CheckStatus = 'active' | 'activated';
-export type CurrencyType = 'crypto' | 'fiat';
-export type ProcessingBot = 'CryptoBot' | 'CryptoTestnetBot';
-export type PaidButtonName =
-  | 'viewItem'
-  | 'openChannel'
-  | 'openBots'
-  | 'callback';
+export enum Protocol {
+  Mainnet = 'mainnet',
+  Testnet = 'testnet',
+}
+export enum Mode {
+  Mainnet = 'mainnet',
+  Testnet = 'testnet',
+}
+export enum TransferStatus {
+  Completed = 'completed',
+}
+export enum InvoiceStatus {
+  Active = 'active',
+  Paid = 'paid',
+  Expired = 'expired',
+}
+export enum CheckStatus {
+  Active = 'active',
+  Activated = 'activated',
+}
+export enum CurrencyType {
+  Crypto = 'crypto',
+  Fiat = 'fiat',
+}
+export enum ProcessingBot {
+  Mainnet = 'CryptoBot',
+  Testnet = 'CryptoTestnetBot',
+}
+export enum PaidButtonName {
+  ViewItem = 'viewItem',
+  OpenChannel = 'openChannel',
+  OpenBots = 'openBots',
+  Callback = 'callback',
+}
 export type InvoiceCurrencyOptions =
   | CryptoInvoiceCurrency
   | FiatInvoiceCurrency;
@@ -380,66 +404,69 @@ export type Update<UpdateType> = {
   // @ts-ignore
 } & Updates[UpdateType];
 
-export type Asset =
-  | 'USDT'
-  | 'TON'
-  | 'BTC'
-  | 'ETH'
-  | 'LTC'
-  | 'BNB'
-  | 'TRX'
-  | 'USDC'
-  | 'JET';
+export enum Asset {
+  USDT = 'USDT',
+  TON = 'TON',
+  BTC = 'BTC',
+  ETH = 'ETH',
+  LTC = 'LTC',
+  BNB = 'BNB',
+  TRX = 'TRX',
+  USDC = 'USDC',
+  JET = 'JET',
+}
 
-export type Fiat =
-  | 'USD'
-  | 'EUR'
-  | 'RUB'
-  | 'BYN'
-  | 'UAH'
-  | 'GBP'
-  | 'CNY'
-  | 'KZT'
-  | 'UZS'
-  | 'GEL'
-  | 'TRY'
-  | 'AMD'
-  | 'THB'
-  | 'INR'
-  | 'BRL'
-  | 'IDR'
-  | 'AZN'
-  | 'AED'
-  | 'PLN'
-  | 'ILS';
+export enum Fiat {
+  USD = 'USD',
+  EUR = 'EUR',
+  RUB = 'RUB',
+  BYN = 'BYN',
+  UAH = 'UAH',
+  GBP = 'GBP',
+  CNY = 'CNY',
+  KZT = 'KZT',
+  UZS = 'UZS',
+  GEL = 'GEL',
+  TRY = 'TRY',
+  AMD = 'AMD',
+  THB = 'THB',
+  INR = 'INR',
+  BRL = 'BRL',
+  IDR = 'IDR',
+  AZN = 'AZN',
+  AED = 'AED',
+  PLN = 'PLN',
+  ILS = 'ILS',
+}
 
-export type CurrencyName =
-  | 'Tether'
-  | 'Toncoin'
-  | 'Bitcoin'
-  | 'Litecoin'
-  | 'Ethereum'
-  | 'Binance Coin'
-  | 'TRON'
-  | 'USD Coin'
-  | 'Jetton'
-  | 'Russian ruble'
-  | 'United States dollar'
-  | 'Euro'
-  | 'Belarusian ruble'
-  | 'Ukrainian hryvnia'
-  | 'Pound sterling'
-  | 'Renminbi'
-  | 'Kazakhstani tenge'
-  | 'Uzbekistani som'
-  | 'Georgian lari'
-  | 'Turkish lira'
-  | 'Armenian dram'
-  | 'Thai baht'
-  | 'Indian rupee'
-  | 'Brazilian real'
-  | 'Indonesian rupiah'
-  | 'Azerbaijani manat'
-  | 'United Arab Emirates dirham'
-  | 'Polish zloty'
-  | 'Israeli new shekel';
+export enum CurrencyName {
+  USDT = 'Tether',
+  TON = 'Toncoin',
+  BTC = 'Bitcoin',
+  ETH = 'Litecoin',
+  LTC = 'Ethereum',
+  BNB = 'Binance Coin',
+  TRX = 'TRON',
+  USDC = 'USD Coin',
+  JET = 'Jetton',
+  USD = 'Russian ruble',
+  EUR = 'United States dollar',
+  RUB = 'Euro',
+  BYN = 'Belarusian ruble',
+  UAH = 'Ukrainian hryvnia',
+  GBP = 'Pound sterling',
+  CNY = 'Renminbi',
+  KZT = 'Kazakhstani tenge',
+  UZS = 'Uzbekistani som',
+  GEL = 'Georgian lari',
+  TRY = 'Turkish lira',
+  AMD = 'Armenian dram',
+  THB = 'Thai baht',
+  INR = 'Indian rupee',
+  BRL = 'Brazilian real',
+  IDR = 'Indonesian rupiah',
+  AZN = 'Azerbaijani manat',
+  AED = 'United Arab Emirates dirham',
+  PLN = 'Polish zloty',
+  ILS = 'Israeli new shekel',
+}
