@@ -27,7 +27,7 @@ export default defineConfig({
                 link: '/methods',
               },
               { text: 'Types', link: '/types' },
-              { text: 'Testnet', link: '/testnet' },
+              { text: 'Webhooks', link: '/webhooks' },
               { text: 'Examples', link: '/examples' },
             ],
           },
