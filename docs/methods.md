@@ -140,13 +140,13 @@ const spendID = payment.generateSpendID();
 await payment.transfer(123456789, 'TON', 5, spendID);
 ```
 
-| Field      | Type                        | Description                                                                                                                                                                                                                                                                                      |
-| ---------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `user_id`  | `number`                    | Telegram user ID. User must have previously used [@CryptoBot](https://t.me/CryptoBot) ([@CryptoTestnetBot](https://t.me/CryptoTestnetBot) for testnet).                                                                                                                                          |
-| `asset`    | [`Asset`](./types.md#Asset) | Cryptocurrency alphabetic code.                                                                                                                                                                                                                                                                  |
-| `amount`   | `number`                    | Amount of the transfer in float. The minimum and maximum amount limits for each of the supported assets roughly correspond to 1-25000 USD. Use [getExchangeRates](../docs/functions.md#) to convert amounts.                                                                                     |
-| `spend_id` | `string`                    | UUID or any random UTF-8 string generated for each transfer to make your request idempotent in cases when it should be retried (for example, request timeout, connection reset,`500`HTTP status, etc). Only one transfer with the same`spend_id`can be accepted from your app. Up to`64`symbols. |
-| `options?` | `TransferOptions`           | Additional optional options.                                                                                                                                                                                                                                                                     |
+| Field      | Type                      | Description                                                                                                                                                                                                                                                                                      |
+| ---------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `user_id`  | `number`                  | Telegram user ID. User must have previously used [@CryptoBot](https://t.me/CryptoBot) ([@CryptoTestnetBot](https://t.me/CryptoTestnetBot) for testnet).                                                                                                                                          |
+| `asset`    | [`Asset`](types.md#Asset) | Cryptocurrency alphabetic code.                                                                                                                                                                                                                                                                  |
+| `amount`   | `number`                  | Amount of the transfer in float. The minimum and maximum amount limits for each of the supported assets roughly correspond to 1-25000 USD. Use [getExchangeRates](methods.md#getExchangeRates) to convert amounts.                                                                               |
+| `spend_id` | `string`                  | UUID or any random UTF-8 string generated for each transfer to make your request idempotent in cases when it should be retried (for example, request timeout, connection reset,`500`HTTP status, etc). Only one transfer with the same`spend_id`can be accepted from your app. Up to`64`symbols. |
+| `options?` | `TransferOptions`         | Additional optional options.                                                                                                                                                                                                                                                                     |
 
 Returns `Promise` with `true`
 
@@ -301,10 +301,10 @@ const exchangeRate = payment.getExchangeRate('TON', 'USD');
 console.log(exchangeRate);
 ```
 
-| Field    | Type                        | Description                     |
-| -------- | --------------------------- | ------------------------------- |
-| `source` | [`Asset`](./types.md#Asset) | Cryptocurrency alphabetic code. |
-| `target` | [`Fiat`](./types.md#Fiat)   | Fiat currency code.             |
+| Field    | Type                      | Description                     |
+| -------- | ------------------------- | ------------------------------- |
+| `source` | [`Asset`](types.md#Asset) | Cryptocurrency alphabetic code. |
+| `target` | [`Fiat`](types.md#Fiat)   | Fiat currency code.             |
 
 Returns `Promise` with `ExchangeRate`
 
@@ -332,8 +332,8 @@ const currency = payment.getCurrency('TON');
 console.log(currency);
 ```
 
-| Field  | Type                                                     | Description                                      |
-| ------ | -------------------------------------------------------- | ------------------------------------------------ |
-| `code` | [`Asset`](./types.md#Asset) or [`Fiat`](./types.md#Fiat) | Cryptocurrency alphabetic or fiat currency code. |
+| Field  | Type                                                 | Description                                      |
+| ------ | ---------------------------------------------------- | ------------------------------------------------ |
+| `code` | [`Asset`](types.md#Asset) or [`Fiat`](types.md#Fiat) | Cryptocurrency alphabetic or fiat currency code. |
 
 Returns `Promise` with `Currency`
