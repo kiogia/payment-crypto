@@ -3,3 +3,4 @@
 /docs/.vitepress/cache
 /srcts
 tsconfig.json
+package-lock.json
