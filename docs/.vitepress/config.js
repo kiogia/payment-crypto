@@ -6,6 +6,7 @@ export default defineConfig({
   head: [['link', { rel: 'icon', href: 'media/favicon.png' }]],
   title: 'payment-crypto',
   lastUpdated: true,
+  cleanUrls: true,
   locales: {
     root: {
       lang: 'en',
@@ -14,8 +15,28 @@ export default defineConfig({
       themeConfig: {
         nav: [
           { text: 'Home', link: '/' },
-          { text: 'Functions', link: '/methods' },
+          { text: 'Methods', link: '/methods' },
           { text: 'Examples', link: '/examples' },
+          {
+            text: 'Useful Links',
+            items: [
+              {
+                text: 'Official Reference',
+                link: 'https://help.crypt.bot/crypto-pay-api',
+                target: 'blank',
+              },
+              {
+                text: 'Official Reference',
+                link: 'https://help.crypt.bot/crypto-pay-api',
+                target: 'blank',
+              },
+              {
+                text: 'Official Reference',
+                link: 'https://help.crypt.bot/crypto-pay-api',
+                target: 'blank',
+              },
+            ],
+          },
         ],
         sidebar: [
           {
@@ -35,6 +56,7 @@ export default defineConfig({
             text: 'Other',
             collapsed: true,
             items: [
+              { text: 'FAQ', link: '/faq' },
               { text: 'Useful Links', link: '/useful-links' },
               { text: 'API Changelog', link: '/changelog/api' },
               { text: 'Module Changelog', link: '/changelog/module' },
@@ -83,7 +105,7 @@ export default defineConfig({
       provider: 'local',
     },
     logo: {
-      src: './media/favicon.png',
+      src: 'media/favicon.png',
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/kiogia/payment-crypto' },

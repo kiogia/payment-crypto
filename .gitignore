@@ -1,3 +1,5 @@
-node_modules
-docs/.vitepress/dist 
-docs/.vitepress/cache
+/node_modules
+/docs/.vitepress/dist 
+/docs/.vitepress/cache
+/srcts
+tsconfig.json

@@ -1,17 +1,16 @@
 {
-  "type": "module",
   "name": "payment-crypto",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Crypto Pay API",
   "files": [
     "LICENSE",
     "README.md",
     "module/*"
   ],
-  "main": "./module/payment-crypto.сjs",
+  "main": "./module/payment-crypto.js",
   "types": "./module/payment-crypto.d.ts",
   "scripts": {
-    "docs": "typedoc module/*d.ts",
+    "build": "tsc",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
@@ -33,14 +32,11 @@
     "url": "https://github.com/kiogia/payment-crypto/issues"
   },
   "homepage": "https://github.com/kiogia/payment-crypto#readme",
-  "dependencies": {
-    "crypto": "^1.0.1",
-    "express": "^4.18.2"
-  },
   "devDependencies": {
-    "typedoc": "^0.25.4",
-    "typedoc-material-theme": "^1.0.1",
-    "typedoc-plugin-extras": "^3.0.0",
-    "vitepress": "^1.2.3"
+    "@types/node": "^22.1.0",
+    "vitepress": "^1.3.1"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
   }
 }

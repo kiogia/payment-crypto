@@ -97,6 +97,7 @@
 | Field          | Type                                | Optional | Description                                     |
 | -------------- | ----------------------------------- | -------- | ----------------------------------------------- |
 | `transfer_id`  | `number`                            | `false`  | Unique ID for this transfer.                    |
+| `spend_id`     | `string`                            | `false`  | Unique UTF-8 string.                            |
 | `user_id`      | `number`                            | `false`  | Telegram user ID the transfer was sent to.      |
 | `asset`        | [`Asset`](#asset)                   | `false`  | Cryptocurrency alphabetic code.                 |
 | `amount`       | `number`                            | `false`  | Amount of the transfer.                         |
